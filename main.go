@@ -5,7 +5,7 @@ import (
 	"sync"
 	"fmt"
 	"time"
-	"go_pool/work2"
+	"go-work/work2"
 )
 
 
