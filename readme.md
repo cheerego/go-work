@@ -2,7 +2,7 @@
 
 ## 示例代码
 ### 阻塞的通道
-```
+```golang
 package work
 
 import "sync"
@@ -46,7 +46,7 @@ func (p *Pool)Shutdown()  {
 ```
 
 ### 带有缓冲区的通道
-```
+```golang
 package work2
 
 import "sync"
@@ -90,7 +90,7 @@ func (p *Pool) Shutdown() {
 ```
 
 ### Demo
-```
+```golang
 package main
 
 import (
