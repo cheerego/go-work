@@ -1,4 +1,4 @@
-package work
+package work2
 
 import "sync"
 
@@ -13,14 +13,13 @@ type Pool struct {
 
 func New(maxGoroutines int) *Pool {
 	p := Pool{
-		work: make(chan Worker),
+		work: make(chan Worker,maxGoroutines),
 	}
 	p.wg.Add(maxGoroutines)
 
 	for i := 0; i < maxGoroutines; i++ {
 		go func() {
-			w, ok := <-p.work
-			if ok {
+			for w := range p.work {
 				w.Task()
 			}
 			p.wg.Done()

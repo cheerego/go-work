@@ -1,22 +1,15 @@
 package main
 
 import (
-	"go_pool/work"
 	"log"
-	"time"
 	"sync"
 	"fmt"
+	"time"
+	"go_pool/work2"
 )
 
-var names = []string{
-	"steve",
-	"bob",
-	"mary",
-	"therese",
-	"jason",
-}
 
-// namePrinter使用特定方式打印名字
+// Ping URL
 type Ping struct {
 	name string
 }
@@ -24,12 +17,12 @@ type Ping struct {
 // Task实现Worker接口
 func (m *Ping) Task() {
 	log.Print(m.name)
-	time.Sleep(time.Second * 2)
+	time.Sleep(time.Second * 1)
 }
 
 func main() {
-	// 使用两个goroutine来创建工作池 p := work.New(2)
-	p := work.New(2)
+	//p := work.New(2) //使用阻塞的通道
+	p := work2.New(2) //使用带有两个缓冲区的通道
 	var wg sync.WaitGroup
 	wg.Add(100)
 	for i := 0; i < 100; i++ {
