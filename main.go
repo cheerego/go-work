@@ -22,10 +22,10 @@ func (m *Ping) Task() {
 
 func main() {
 	//p := work.New(2) //使用阻塞的通道
-	p := work2.New(2) //使用带有两个缓冲区的通道
+	p := work2.New(10) //使用带有两个缓冲区的通道
 	var wg sync.WaitGroup
-	wg.Add(100)
-	for i := 0; i < 100; i++ {
+	wg.Add(101)
+	for i := 0; i < 101; i++ {
 		task := Ping{
 			name:fmt.Sprintf("http://www.baidu.com/%d",i),
 		}
