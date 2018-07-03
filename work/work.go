@@ -19,8 +19,7 @@ func New(maxGoroutines int) *Pool {
 
 	for i := 0; i < maxGoroutines; i++ {
 		go func() {
-			w, ok := <-p.work
-			if ok {
+			for w := range p.work {
 				w.Task()
 			}
 			p.wg.Done()
